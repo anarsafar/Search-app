@@ -6,11 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search app</title>
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/main.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-    
+    <main>
+        <div class="logo">Google</div>
+        <form role="search">
+            <div>
+                <span class="material-icons search-icon">search</span>
+                <input type="text" autocomplete="off" role="searchbox">
+            </div>
+            <div>
+                <span class="material-icons clear-icon">clear</span>
+                <span class="mic-icon"><img src="./img/mic.svg" alt="Microphone"></span>
+            </div>
+        </form>
+        <div class="results">
+            <span class="about-results">About 20 results</span>
+            <div class="result">
+                <a href="#" target="_blank">Result</a>
+                <div>
+                    <div class="link-img">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/African_wild_dog_%28Lycaon_pictus_pictus%29.jpg/50px-African_wild_dog_%28Lycaon_pictus_pictus%29.jpg"
+                            alt="">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing...</p>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button>Google Search</button>
+            <button>I'm Feeling Lucky</button>
+        </div>
+    </main>
 </body>
 
 </html>

@@ -1,0 +1,32 @@
+.results {
+  width: 85%;
+  margin: auto;
+  text-align: left;
+  .about-results {
+    font-size: 0.8rem;
+    color: $dark-result-description;
+  }
+  .result {
+    margin: 1rem 0;
+    a {
+      font-size: 0.9rem;
+      display: block;
+      color: $link;
+      &:visited {
+        color: $link-visited;
+      }
+    }
+    & > div {
+      @include flex(space-between, center);
+      img {
+        flex: 0;
+      }
+      P {
+        color: $dark-result-description;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding-left: 0.5rem;
+      }
+    }
+  }
+}

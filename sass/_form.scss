@@ -1,0 +1,48 @@
+form {
+  @include flex(space-between, center);
+  margin: 1rem 0;
+  border: 1px solid $dark-line;
+  border-radius: 2rem;
+  padding: 0.3rem 0.8rem;
+  & > div {
+    @include flex(flex-start, center);
+    .search-icon {
+      color: $dark-search-icon;
+      font-size: 1.6rem;
+    }
+    .clear-icon {
+      color: $dark-clear-icon;
+      font-size: 1.6rem;
+      display: none;
+      &.active{
+          display: block;
+      }
+    }
+    .mic-icon {
+      width: 2.4rem;
+      height: 2rem;
+      padding-left: 0.6rem;
+      &.active{
+          border-left: thin solid $dark-line;
+      }
+    }
+    input {
+      padding: 0.2rem 0;
+      margin: 0 0.4rem;
+      width: 220px;
+      background: transparent;
+      border: none;
+      font-family: inherit;
+      color: $dark-form-and-result-text;
+      font-size: 1.3rem;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  &:hover {
+    background: $dark-recent-tab;
+    border: 1px solid transparent;
+    box-shadow: 0px 8px 14px -9px rgba(0, 0, 0, 0.75);
+  }
+}
