@@ -1,9 +1,11 @@
-.results {
+.results-container {
   width: 85%;
   margin: auto;
   text-align: left;
   .about-results {
     font-size: 0.8rem;
+    display: block;
+    margin-top: 0.6rem;
     color: $dark-result-description;
   }
   .result {
@@ -11,13 +13,14 @@
     a {
       font-size: 0.9rem;
       display: block;
+      margin-bottom: 0.5rem;
       color: $link;
       &:visited {
         color: $link-visited;
       }
     }
     & > div {
-      @include flex(space-between, center);
+      @include flex(flex-start, center);
       img {
         flex: 0;
       }

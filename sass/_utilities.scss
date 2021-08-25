@@ -10,9 +10,8 @@ $dark-line: #5f6368;
 $dark-clear-icon: #757b80;
 $dark-form-and-result-text: #e8eaed;
 $dark-result-description: #969ba1;
-$link:#8ab4f8;
-$link-visited:#C58AF9;
-
+$link: #8ab4f8;
+$link-visited: #c58af9;
 
 body {
   padding: 0;
@@ -32,7 +31,8 @@ img {
 }
 
 main {
-  width: 350px;
+  width: 85vw;
+  max-width: 700px;
   margin: 5rem auto auto auto;
   text-align: center;
   .logo {
@@ -49,13 +49,33 @@ main {
   align-items: $align;
 }
 
+%darken {
+  background: $dark-recent-tab;
+  border: 1px solid transparent;
+  box-shadow: 0px 8px 14px -9px rgba(0, 0, 0, 0.75);
+}
+
 button {
   all: unset;
+  cursor: pointer;
   margin: 0.7rem 0.3rem;
-  color: $dark-button-text;
+
   background-color: $dark-button-background;
   font-family: inherit;
   font-size: 0.8rem;
+  font-weight: 800;
   padding: 0.5rem;
   border-radius: 5px;
+  a {
+    color: $dark-button-text;
+    text-decoration: none;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  main {
+    .logo {
+      font-size: 4.2rem;
+    }
+  }
 }
