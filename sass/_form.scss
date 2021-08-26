@@ -18,19 +18,17 @@ form {
       cursor: pointer;
       font-size: 1.6rem;
       margin-right: 0.3rem;
+      padding-right: 0.3rem;
       display: none;
       &.active {
         display: block;
+        border-right: thin solid $dark-line;
       }
     }
     .mic-icon {
       width: 2.4rem;
       height: 2rem;
       cursor: pointer;
-      padding-left: 0.6rem;
-      &.active {
-        border-left: thin solid $dark-line;
-      }
     }
   }
   input {

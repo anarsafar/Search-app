@@ -21,14 +21,13 @@
     }
     & > div {
       @include flex(flex-start, center);
-      img {
-        flex: 0;
+      .link-img {
+        padding-right: 0.5rem;
       }
-      P {
+      p {
         color: $dark-result-description;
         font-size: 0.8rem;
         font-weight: 500;
-        padding-left: 0.5rem;
       }
     }
   }
