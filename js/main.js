@@ -1,6 +1,7 @@
 import { search, clear, form, setSearchFocus, showClearButton, clearSearchBox} from "./searchBar.js";
 import {buildSearchResults, clearAboutLine, setAboutLine, deleteSearchResults} from "./searchResult.js";
 import { getSearchQuery, retrieveSearchResults } from "./getData.js";
+import {showRecent} from './toggleRecent.js';
 
 document.addEventListener("readystatechange", (e) => {
   return e.target.readyState === "complete" ? initApp() : null;
@@ -9,6 +10,7 @@ document.addEventListener("readystatechange", (e) => {
 const initApp = () => {
   setSearchFocus();
   search.addEventListener("input", showClearButton);
+  search.addEventListener('click',showRecent);
   clear.addEventListener("click", clearSearchBox);
   form.addEventListener("submit", submitSearch);
 };
