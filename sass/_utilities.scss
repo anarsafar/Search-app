@@ -40,6 +40,7 @@ main {
     font-weight: 800;
     letter-spacing: 0.1rem;
     color: #fff;
+    user-select: none;
   }
 }
 
@@ -59,7 +60,6 @@ button {
   all: unset;
   cursor: pointer;
   margin: 0.7rem 0.3rem;
-
   background-color: $dark-button-background;
   font-family: inherit;
   font-size: 0.8rem;

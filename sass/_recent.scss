@@ -1,0 +1,83 @@
+.recent-tab {
+  display: none;
+  background: $dark-recent-tab;
+  padding: 0.5rem 1.6rem 2rem 1rem;
+  border-bottom-right-radius: 1.4rem;
+  border-bottom-left-radius: 1.4rem;
+  box-shadow: 0px 15px 20px -7px rgba(0,0,0,0.75);
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  &.activate-recent-tab{
+    display: block;
+  }
+  &::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 94%;
+    margin: 0 1rem;
+    height: 1px;
+    border-top: thin solid $dark-line;
+  }
+  .recent {
+    margin: 0.5rem 0;
+    @include flex(space-between, center);
+    .remove {
+      a {
+        color: $dark-result-description;
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-decoration: none;
+        &:hover{
+          text-decoration: underline;
+          color: $link;
+        }
+      }
+    }
+    & > div {
+      @include flex(flex-start, center);
+      .recent-icon {
+        color: $dark-result-description;
+        font-size: 1rem;
+      }
+      .links {
+        margin-left: 0.8rem;
+        a {
+          color: $link-visited;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+.toggle-label{
+  border: 1px solid red;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  background-color: red;
+}
+
+input:checked ~ .modal-overlay {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}

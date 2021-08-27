@@ -4,6 +4,15 @@ form {
   border: 1px solid $dark-line;
   border-radius: 2rem;
   padding: 0.4rem 0.8rem;
+  position: relative;
+  &.activate-recent-tab{
+    border: none;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+    border-top-left-radius: 1.4rem;
+    border-top-right-radius: 1.4rem;
+    background: $dark-recent-tab;
+  }
   & > div {
     @include flex(flex-start, center);
     &:first-child {
@@ -31,7 +40,7 @@ form {
       cursor: pointer;
     }
   }
-  input {
+  input[type="text"] {
     padding: 0;
     margin: 0.2rem 0.4rem;
     width: 100%;
