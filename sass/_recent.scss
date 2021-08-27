@@ -53,31 +53,3 @@
     }
   }
 }
-
-.toggle-label{
-  border: 1px solid red;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -70%);
-  background-color: red;
-}
-
-input:checked ~ .modal-overlay {
-  display: block;
-  opacity: 1;
-  pointer-events: auto;
-}
