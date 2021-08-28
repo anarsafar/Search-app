@@ -9,16 +9,19 @@ import {
 import { recentTab } from "./toggleRecent.js";
 import { retrieveSearchResults } from "./getData.js";
 
-export let resultRecent = [];
+export let resultRecent =  JSON.parse(localStorage.getItem("resultRecent")) || [];
 
 const allSearched = (query) => {
-  if(query !== undefined) resultRecent.unshift(query);
+  if (query !== undefined) {
+    resultRecent.unshift(query);
+    localStorage.setItem("resultRecent", JSON.stringify(resultRecent))
+  }
   return resultRecent;
 };
 
 const getLastTenSearched = (resultRecent) => {
   let getLastTen = [];
-  getLastTen = resultRecent.slice(0,10);
+  getLastTen = resultRecent.slice(0, 10);
   return getLastTen;
 };
 
@@ -74,5 +77,6 @@ const deleteRecent = (e) => {
   e.preventDefault();
   let index = e.target.getAttribute("index");
   resultRecent = resultRecent.filter((item) => item !== index);
+  localStorage.setItem("resultRecent", JSON.stringify(resultRecent))
   displayRecent();
 };

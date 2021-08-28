@@ -14,6 +14,7 @@ const initApp = () => {
   search.addEventListener('click',showRecent);
   clear.addEventListener("click", clearSearchBox);
   form.addEventListener("submit", submitSearch);
+  displayRecent();
 };
 
 export const submitSearch = (e) => {
