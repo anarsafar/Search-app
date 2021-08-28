@@ -5,7 +5,7 @@ form {
   border-radius: 2rem;
   padding: 0.4rem 0.8rem;
   position: relative;
-  &.activate-recent-tab{
+  &.activate-recent-tab {
     border: none;
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0%;
@@ -38,6 +38,39 @@ form {
       width: 2.4rem;
       height: 2rem;
       cursor: pointer;
+      position: relative;
+      @mixin microphone($content,$display,$position,$top,$left,$width,$height,$translateX,$translateY){
+        content: $content;
+        display: $display;
+        position: $position;
+        top: $top;
+        left: $left;
+        width: $width;
+        height: $height;
+        transform: translate($translateX,$translateY);
+      }
+      &::before {
+        @include microphone("Search by voice",none ,absolute ,100% , 0, 5rem, 1rem, -30%, 30%);
+        color: $dark-form-and-result-text;
+        font-size: 0.7rem;
+        font-family: inherit;
+        padding: 0.3rem;
+        background: $dark-clear-icon;
+      }
+      &::after {
+        @include microphone("", none, absolute, 50%, 50%, 0px, 0px, -50%, 150%);
+        border-right: solid 10px transparent;
+        border-left: solid 10px transparent;
+        border-bottom: solid 10px $dark-clear-icon;
+      }
+      &:hover {
+        &::before {
+          display: block !important;
+        }
+        &::after {
+          display: block !important;
+        }
+      }
     }
   }
   input[type="text"] {
