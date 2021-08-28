@@ -11,7 +11,7 @@ export const showRecent = () => {
 };
 
 const closeRecent = (e) => {
-  if (!e.target.getAttribute("data")) {
+  if (!e.target.getAttribute("data") || resultRecent.length === 0) {
     form.classList.remove("activate-recent-tab");
     recentTab.classList.remove("activate-recent-tab");
     document.removeEventListener("click", closeRecent);

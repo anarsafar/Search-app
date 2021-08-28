@@ -1,24 +1,29 @@
 import { setSearchFocus } from "./searchBar.js";
 import { search } from "./searchBar.js";
-import { clearAboutLine, deleteSearchResults, setAboutLine, buildSearchResults} from "./searchResult.js";
+import {
+  clearAboutLine,
+  deleteSearchResults,
+  setAboutLine,
+  buildSearchResults,
+} from "./searchResult.js";
 import { recentTab } from "./toggleRecent.js";
 import { retrieveSearchResults } from "./getData.js";
 
 export let resultRecent = [];
 
 const allSearched = (query) => {
-  resultRecent.push(query);
+  if(query !== undefined) resultRecent.unshift(query);
   return resultRecent;
 };
 
 const getLastTenSearched = (resultRecent) => {
   let getLastTen = [];
-  getLastTen = resultRecent.slice(-10);
+  getLastTen = resultRecent.slice(0,10);
   return getLastTen;
 };
 
 export const displayRecent = (query) => {
-  if (!resultRecent.includes(query)) {
+  if (!resultRecent.includes(query) || query === undefined) {
     recentTab.innerHTML = "";
     getLastTenSearched(allSearched(query)).forEach((item) => {
       recentTab.innerHTML += `
@@ -34,6 +39,8 @@ export const displayRecent = (query) => {
     });
   }
   const getRecent = document.querySelectorAll(".getData");
+  const removeButtons = document.querySelectorAll(".remove-link");
+  processRemoving(removeButtons);
   processRecent(getRecent);
 };
 
@@ -57,4 +64,15 @@ const processLink = async (e) => {
   buildSearchResults(resultArray);
   setAboutLine(resultArray.length);
   search.value = query;
+};
+
+const processRemoving = (removeButtons) => {
+  removeButtons.forEach((btn) => btn.addEventListener("click", deleteRecent));
+};
+
+const deleteRecent = (e) => {
+  e.preventDefault();
+  let index = e.target.getAttribute("index");
+  resultRecent = resultRecent.filter((item) => item !== index);
+  displayRecent();
 };
