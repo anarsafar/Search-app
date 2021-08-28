@@ -1,7 +1,8 @@
 import { search, clear, form, setSearchFocus, showClearButton, clearSearchBox} from "./searchBar.js";
 import {buildSearchResults, clearAboutLine, setAboutLine, deleteSearchResults} from "./searchResult.js";
 import { getSearchQuery, retrieveSearchResults } from "./getData.js";
-import {showRecent} from './toggleRecent.js';
+import { showRecent } from './toggleRecent.js';
+import { displayRecent } from "./recentResult.js";
 
 document.addEventListener("readystatechange", (e) => {
   return e.target.readyState === "complete" ? initApp() : null;
@@ -15,7 +16,7 @@ const initApp = () => {
   form.addEventListener("submit", submitSearch);
 };
 
-const submitSearch = (e) => {
+export const submitSearch = (e) => {
   e.preventDefault();
   deleteSearchResults();
   processSearch();
@@ -25,6 +26,7 @@ const submitSearch = (e) => {
 const processSearch = async () => {
   clearAboutLine();
   const query = getSearchQuery();
+  displayRecent(query);
   if (query === "") return;
   const resultArray = await retrieveSearchResults(query);
   if (resultArray.length) buildSearchResults(resultArray);

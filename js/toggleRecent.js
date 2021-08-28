@@ -1,16 +1,17 @@
+import { resultRecent } from "./recentResult.js";
 import { form } from "./searchBar.js";
-const recentTab = document.querySelector(".recent-tab");
+export const recentTab = document.querySelector(".recent-tab");
 
 export const showRecent = () => {
-  if (!form.classList.contains("activate-recent-tab")) {
+  if (!form.classList.contains("activate-recent-tab") && resultRecent.length) {
     form.classList.add("activate-recent-tab");
     recentTab.classList.add("activate-recent-tab");
     document.addEventListener("click", closeRecent);
   }
 };
 
-export const closeRecent = (e) => {
-  if (e.target.getAttribute("logo") || e.target.getAttribute("lang")) {
+const closeRecent = (e) => {
+  if (!e.target.getAttribute("data")) {
     form.classList.remove("activate-recent-tab");
     recentTab.classList.remove("activate-recent-tab");
     document.removeEventListener("click", closeRecent);
