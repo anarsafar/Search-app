@@ -3,6 +3,7 @@ import {buildSearchResults, clearAboutLine, setAboutLine, deleteSearchResults} f
 import { getSearchQuery, retrieveSearchResults } from "./getData.js";
 import { showRecent } from './toggleRecent.js';
 import { displayRecent } from "./recentResult.js";
+import { RecognizeSpeech } from "./SpeechAPI.js";
 
 document.addEventListener("readystatechange", (e) => {
   return e.target.readyState === "complete" ? initApp() : null;
@@ -15,6 +16,7 @@ const initApp = () => {
   clear.addEventListener("click", clearSearchBox);
   form.addEventListener("submit", submitSearch);
   displayRecent();
+  RecognizeSpeech();
 };
 
 export const submitSearch = (e) => {

@@ -1,11 +1,6 @@
 import { setSearchFocus } from "./searchBar.js";
 import { search } from "./searchBar.js";
-import {
-  clearAboutLine,
-  deleteSearchResults,
-  setAboutLine,
-  buildSearchResults,
-} from "./searchResult.js";
+import { clearAboutLine, deleteSearchResults, setAboutLine, buildSearchResults } from "./searchResult.js";
 import { recentTab } from "./toggleRecent.js";
 import { retrieveSearchResults } from "./getData.js";
 
