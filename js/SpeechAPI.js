@@ -1,50 +1,48 @@
-import { search, setSearchFocus } from "./searchBar.js";
-import { clearAboutLine, deleteSearchResults , buildSearchResults, setAboutLine} from "./searchResult.js";
+import { search, setSearchFocus, showClearButton } from "./searchBar.js";
+import { clearAboutLine, deleteSearchResults, buildSearchResults, setAboutLine } from "./searchResult.js";
 import { displayRecent } from "./recentResult.js";
-import { retrieveSearchResults } from './getData.js'
-
-let speechRecognition = new webkitSpeechRecognition();
+import { retrieveSearchResults } from "./getData.js";
 
 const speechResult = document.querySelector(".speech-result");
 const container = document.querySelector(".speech-container");
 const micIcon = document.querySelector(".mic-icon");
 const close = document.querySelector(".clear");
-// const tryAgain = document.querySelector(".try-again");
 
 export const RecognizeSpeech = () => {
   if ("webkitSpeechRecognition" in window) {
-    // speechRecognition.continuous = true; use it if you want continue
+    let speechRecognition = new webkitSpeechRecognition();
+
     speechRecognition.interimResults = true;
     speechRecognition.lang = "en-US";
 
-    displayTranscript();
-    getResult();
-    displayUI();
-
+    displayTranscript(speechRecognition);
+    getResult(speechRecognition);
+    displayUI(speechRecognition);
   } else {
-    console.log("Speech Recognition Not Available");
+    micIcon.onclick = () => window.alert('Speech Recognition Not Available In Your Browser :(')
   }
 };
 
-const displayTranscript = () => {
+const displayTranscript = (speechRecognition) => {
   speechRecognition.onstart = () => {
     console.log("Speech Recognition Started");
     speechResult.innerHTML = "Listening...";
     container.classList.add("activate");
-    document.body.classList.add('activate');
+    document.body.classList.add("activate");
   };
   speechRecognition.onerror = () => {
     console.log("Speech Recognition Error");
   };
   speechRecognition.onend = () => {
     console.log("Speech Recognition Ended");
-    container.classList.contains("activate")
-      ? container.classList.remove("activate") &&  document.body.classList.remove('activate')
-      : null;
+    if (container.classList.contains("activate")) {
+      container.classList.remove("activate");
+      document.body.classList.remove("activate");
+    }
   };
 };
 
-const getResult = () => {
+const getResult = (speechRecognition) => {
   speechRecognition.onresult = (event) => {
     let interim_transcript = "";
     let final_transcript = "";
@@ -60,16 +58,18 @@ const getResult = () => {
     console.log(`Final transcript ${final_transcript}`);
     console.log(`Interim transcript ${interim_transcript}`);
 
-    speechResult.innerHTML = final_transcript.length ? final_transcript : interim_transcript;
+    speechResult.innerHTML = final_transcript.length
+      ? final_transcript
+      : interim_transcript;
     final_transcript.length ? submitSearch(final_transcript) : null;
   };
 };
 
-const displayUI = () => {
+const displayUI = (speechRecognition) => {
   close.onclick = () => {
     speechRecognition.stop();
     container.classList.remove("activate");
-    document.body.classList.remove('activate')
+    document.body.classList.remove("activate");
   };
   micIcon.onclick = () => speechRecognition.start();
 };
@@ -79,13 +79,14 @@ const submitSearch = (final_transcript) => {
   processSearch(final_transcript);
   setSearchFocus();
   search.value = final_transcript;
+  showClearButton();
 };
 
 const processSearch = async (final_transcript) => {
-  if(final_transcript === '') return
+  if (final_transcript === "") return;
   clearAboutLine();
   displayRecent(final_transcript);
   const resultArray = await retrieveSearchResults(final_transcript);
   if (resultArray.length) buildSearchResults(resultArray);
   setAboutLine(resultArray.length);
-}
+};

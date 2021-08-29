@@ -1,4 +1,4 @@
-import { setSearchFocus } from "./searchBar.js";
+import { setSearchFocus, showClearButton } from "./searchBar.js";
 import { search } from "./searchBar.js";
 import { clearAboutLine, deleteSearchResults, setAboutLine, buildSearchResults } from "./searchResult.js";
 import { recentTab } from "./toggleRecent.js";
@@ -31,7 +31,7 @@ export const displayRecent = (query) => {
                      <span class="links"><a class="getData" href="#">${item}</a></span>
                   </div>
                   <span class="remove">
-                    <a href="#" class="remove-link" index=${item} data="toggle">Remove</a>
+                    <a href="#" class="remove-link" data="toggle">Remove</a>
                   </span>
             </div>`;
     });
@@ -62,6 +62,7 @@ const processLink = async (e) => {
   buildSearchResults(resultArray);
   setAboutLine(resultArray.length);
   search.value = query;
+  showClearButton();
 };
 
 const processRemoving = (removeButtons) => {
@@ -70,10 +71,8 @@ const processRemoving = (removeButtons) => {
 
 const deleteRecent = (e) => {
   e.preventDefault();
-  let index = e.target.getAttribute("index");
-  console.log(index);
+  let index = e.target.parentElement.parentElement.children[0].children[1].children[0].innerHTML; 
   resultRecent = resultRecent.filter((item) => item !== index);
-  console.log(resultRecent)
   localStorage.setItem("resultRecent", JSON.stringify(resultRecent))
   displayRecent();
 };

@@ -1,17 +1,5 @@
-import {
-  search,
-  clear,
-  form,
-  setSearchFocus,
-  showClearButton,
-  clearSearchBox,
-} from "./searchBar.js";
-import {
-  buildSearchResults,
-  clearAboutLine,
-  setAboutLine,
-  deleteSearchResults,
-} from "./searchResult.js";
+import { search, clear, form, setSearchFocus, showClearButton, clearSearchBox } from "./searchBar.js";
+import { buildSearchResults, clearAboutLine, setAboutLine, deleteSearchResults } from "./searchResult.js";
 import { getSearchQuery, retrieveSearchResults } from "./getData.js";
 import { showRecent } from "./toggleRecent.js";
 import { displayRecent } from "./recentResult.js";
