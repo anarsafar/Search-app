@@ -71,7 +71,9 @@ const processRemoving = (removeButtons) => {
 const deleteRecent = (e) => {
   e.preventDefault();
   let index = e.target.getAttribute("index");
+  console.log(index);
   resultRecent = resultRecent.filter((item) => item !== index);
+  console.log(resultRecent)
   localStorage.setItem("resultRecent", JSON.stringify(resultRecent))
   displayRecent();
 };

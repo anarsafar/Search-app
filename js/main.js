@@ -1,7 +1,19 @@
-import { search, clear, form, setSearchFocus, showClearButton, clearSearchBox} from "./searchBar.js";
-import {buildSearchResults, clearAboutLine, setAboutLine, deleteSearchResults} from "./searchResult.js";
+import {
+  search,
+  clear,
+  form,
+  setSearchFocus,
+  showClearButton,
+  clearSearchBox,
+} from "./searchBar.js";
+import {
+  buildSearchResults,
+  clearAboutLine,
+  setAboutLine,
+  deleteSearchResults,
+} from "./searchResult.js";
 import { getSearchQuery, retrieveSearchResults } from "./getData.js";
-import { showRecent } from './toggleRecent.js';
+import { showRecent } from "./toggleRecent.js";
 import { displayRecent } from "./recentResult.js";
 import { RecognizeSpeech } from "./SpeechAPI.js";
 
@@ -12,7 +24,7 @@ document.addEventListener("readystatechange", (e) => {
 const initApp = () => {
   setSearchFocus();
   search.addEventListener("input", showClearButton);
-  search.addEventListener('click',showRecent);
+  search.addEventListener("click", showRecent);
   clear.addEventListener("click", clearSearchBox);
   form.addEventListener("submit", submitSearch);
   displayRecent();
@@ -25,12 +37,14 @@ export const submitSearch = (e) => {
   processSearch();
   setSearchFocus();
 };
-
+ 
 const processSearch = async () => {
   clearAboutLine();
-  const query = getSearchQuery();
+  let query = getSearchQuery();
+  if (query === "") {
+    return;
+  }
   displayRecent(query);
-  if (query === "") return;
   const resultArray = await retrieveSearchResults(query);
   if (resultArray.length) buildSearchResults(resultArray);
   setAboutLine(resultArray.length);

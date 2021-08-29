@@ -6,6 +6,17 @@
   width: 100vw;
   height: 100vh;
   background: #fff;
+  opacity: 0;
+  user-select: none;
+  visibility: none;
+  z-index: -1;
+  transition: opacity 0.5s ease;
+  &.activate{
+    opacity: 1;
+    user-select: initial;
+    visibility: visible;
+    z-index: auto;
+  }
   .clear {
     cursor: pointer;
     position: absolute;
