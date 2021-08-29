@@ -1,0 +1,86 @@
+.speech-container {
+  @include flex(space-around, center);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  .clear {
+    cursor: pointer;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: block;
+    color: $dark-clear-icon;
+    font-size: 2rem;
+  }
+  .interimResult {
+    .try-again{
+      display: none;
+    }
+    p {
+      font-size: 2rem;
+      color: $dark-result-description;
+      a{
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: $link;
+      }
+    }
+  }
+  & > div {
+    .circle-container {
+      position: relative;
+      z-index: 1;
+      left: 0;
+      bottom: 50%;
+      transform: translateY(-50%);
+      .circle {
+        transition: scale ease-in-out;
+        animation: scale 0.7s infinite alternate-reverse both;
+        width: 10rem;
+        height: 10rem;
+        background: rgba(224, 222, 222, 0.829);
+        border-radius: 50%;
+      }
+      @keyframes scale {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.5);
+        }
+      }
+    }
+    .mic {
+      position: relative;
+      top: 50%;
+      left: 0;
+      transform: translateY(50%);
+      cursor: pointer;
+      width: 10rem;
+      height: 10rem;
+      background: $red;
+      border-radius: 50%;
+      z-index: 2;
+      @include flex(center, center);
+      span {
+        font-size: 4rem;
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .speech-container {
+    @include flex(center, center);
+    flex-direction: column;
+    & > div {
+      .circle-container{
+        top: 50%;
+      }
+    }
+  }
+}
