@@ -25,16 +25,14 @@ export const RecognizeSpeech = () => {
 
 const displayTranscript = (speechRecognition) => {
   speechRecognition.onstart = () => {
-    console.log("Speech Recognition Started");
     speechResult.innerHTML = "Listening...";
     container.classList.add("activate");
     document.body.classList.add("activate");
   };
   speechRecognition.onerror = () => {
-    console.log("Speech Recognition Error");
+    window.alert("Make sure microphone is enabled")
   };
   speechRecognition.onend = () => {
-    console.log("Speech Recognition Ended");
     if (container.classList.contains("activate")) {
       container.classList.remove("activate");
       document.body.classList.remove("activate");
@@ -54,13 +52,8 @@ const getResult = (speechRecognition) => {
         interim_transcript += event.results[i][0].transcript;
       }
     }
-
-    console.log(`Final transcript ${final_transcript}`);
-    console.log(`Interim transcript ${interim_transcript}`);
-
-    speechResult.innerHTML = final_transcript.length
-      ? final_transcript
-      : interim_transcript;
+    
+    speechResult.innerHTML = final_transcript.length ? final_transcript : interim_transcript;
     final_transcript.length ? submitSearch(final_transcript) : null;
   };
 };
