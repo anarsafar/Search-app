@@ -2,7 +2,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://search-app-wine.vercel.app/">
       Live Demo
     </a>
   </h3>
@@ -23,9 +23,9 @@
 
 Search app build with Wikipedia API for getting Data and Web Speech API for searching by voice. 
 ### ⚠ Warnings:  
-<h6>Search by voice works only Google Chrome, Edge and Safari.</h6> 
-<h6>If you are get CORS ERROR you can use [cors-anywhere](https://cors-anywhere.herokuapp.com/) to help with accessing data from other websites that are normally forbidden by the same-origin policy of web browsers or you can download extension [allow CORS](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?utm_source=chrome-ntp-icon) and toggle "on" on extension tab.<h6>
-<h6>For search by voice make sure allow use microphone option</h6>
+<p>Search by voice works only Google Chrome, Edge and Safari.<p> 
+<p>If you are get CORS ERROR you can use <a href="https://cors-anywhere.herokuapp.com/">Cors Anywhere</a> to help with accessing data from other websites that are normally forbidden by the same-origin policy of web browsers or you can download extension <a href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?utm_source=chrome-ntp-icon">Allow Cors</a> and toggle "on" on extension tab.<p>
+<p>For search by voice make sure allow use microphone option<p>
 
 ### Built With
 
