@@ -43,5 +43,5 @@ User able do search by query or by voice and search by using recent tab list
 
 ## Contact
 
-- GitHub [anarseferrov](https://{github.com/anarseferrov})
-- Twitter [anarseferrov](https://{twitter.com/anarseferrov})
+- GitHub [anarseferrov](https://{github.com/ianarseferov})
+- Twitter [anarseferrov](https://{twitter.com/ianarseferov})
